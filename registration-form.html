@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="form.css">
+</head>
+
+<body>
+<header>
+    <h1>Registration Form</h1>
+</header>
+
+<main>
+  <form id="registrationForm">
+    <label for="name">Full Name:</label>
+    <input type="text" id="username" name="username" required minlength="3"><br><br>
+
+    <label for="email_address">Email Address:</label>
+    <input type="email" id="email_address" pattern="[a-z0-9._%+-]+@example\.com$" required><br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <label for="confirm_password">Confirm Password:</label>
+    <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+
+    <p>Select gender</p>
+    <label for="male">Male</label>
+    <input type="radio" id="male" name="gender" value="male" required>
+
+    <label for="female">Female</label>
+    <input type="radio" id="female" name="gender" value="female" required><br><br>
+
+    <label for="age">Age (18-above):</label>
+    <input type="number" id="age" name="age" min="18" required><br><br>
+
+    <label for="country">Country</label>
+    <select id="country" name="country" required>
+      <option value="">Select your country</option>
+      <option value="usa">USA</option>
+      <option value="canada">Canada</option>
+      <option value="uk">UK</option>
+      <option value="australia">Australia</option>
+    </select><br><br>
+
+    
+    <input type="checkbox" id="terms_and_conditions" name="terms_and_conditions" required> I agree to the <a href="terms.html" target="_blank">Terms & Conditions</a><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+</main>
+
+<footer>
+    <p>&copy; 2025 Registration Form. All rights reserved.</p>
+</footer>
+</body>
+<script>
+ 
+  const form = document.getElementById('registrationForm');
+  const passwordInput = document.getElementById('password');
+  const confirmPasswordInput = document.getElementById('confirm_password');
+  form.addEventListener('submit', function(event) {
+    const password = passwordInput.value;
+    const confirmPassword = confirmPasswordInput.value;
+
+
+    // Validate password requirements
+    if (!validatePasswordRequirement(password)) {
+      event.preventDefault(); // Stop the form from submitting
+      passwordInput.setCustomValidity('Password must be at least 8 characters long and include at least one number and one special character.');
+      // Display the error message
+      passwordInput.reportValidity(); 
+      return;
+    } else {
+
+      passwordInput.setCustomValidity('');
+    }
+
+    // Validate password matching
+    if (password !== confirmPassword) {
+      event.preventDefault(); // Stop the form from submitting
+      confirmPasswordInput.setCustomValidity('Error: Passwords do not match.');
+      // Display the error message
+      confirmPasswordInput.reportValidity();
+    } else {
+      confirmPasswordInput.setCustomValidity('');
+    }
+  });
+
+  
+  function validatePasswordRequirement(password) {
+    // Check if password is at least 8 characters long
+    const isLongEnough = password.length >= 8;
+    // Check if it contains at least one number (/\d/ is regex for a digit)
+    const hasNumber = /\d/.test(password);
+    // Check if it contains at least one special character
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    //returns TRUE only if all three conditions are met
+    return isLongEnough && hasNumber && hasSpecialChar;
+  }
+  
+  
+  passwordInput.addEventListener('input', function() {
+    this.setCustomValidity('');
+  });
+
+  confirmPasswordInput.addEventListener('input', function() {
+    this.setCustomValidity('');
+  });
+
+</script>
+</html>

@@ -1,0 +1,56 @@
+body {
+  margin: 20px;
+  background-color: #faf5ef ;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header h1, footer p {
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: rgb(93, 47, 19);
+}
+
+form {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 600px;
+  text-align: left;
+  margin: 20px auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+ input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]), select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box; /* Ensures padding doesn't increase width */
+    }
+
+  p {
+    font-weight: bold;
+    margin: 0; 
+  }
+  
+  input[type="submit"] {
+    margin-right: 10px;
+    background-color: #0d548c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    justify-self: center;
+    transition: background-color 0.3s;
+  }
+
+   input[type="submit"]:hover {
+    background-color: #004078;
+    }
